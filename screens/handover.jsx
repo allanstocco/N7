@@ -27,13 +27,13 @@ export default function Handover() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>React Native Date Picker with Text Input</Text>
+      <Text style={styles.text}></Text>
       <TouchableOpacity
         onPress={showDatePicker}
         style={styles.buttonContainer}
         activeOpacity={0.8}
       >
-        <Text>Select Date of Birth</Text>
+        <Text>Date</Text>
       </TouchableOpacity>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
