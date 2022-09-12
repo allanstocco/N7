@@ -1,35 +1,45 @@
 import React, { useState } from "react";
-import DatePicker from "react-native-date-picker";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {
   Text,
   View,
-  Image,
-  Button,
-  TextInput,
   TouchableOpacity,
 } from "react-native";
 
-import styles from "../styles/style";
+import styles from "../styles/style"
 
 export default function Handover() {
-  const [date, setDate] = useState(new Date());
-  const [open, setOpen] = useState(false);
+  const [date, setDate] = useState("");
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setDate(date);
+    hideDatePicker();
+  };
 
   return (
     <View style={styles.container}>
-      <Text>Handover</Text>
-      <Button title="Open" onPress={() => setOpen(true)} />
-      <DatePicker
-        modal
-        open={open}
-        date={date}
-        onConfirm={(date) => {
-          setOpen(false);
-          setDate(date);
-        }}
-        onCancel={() => {
-          setOpen(false);
-        }}
+      <Text style={styles.text}>React Native Date Picker with Text Input</Text>
+      <TouchableOpacity
+        onPress={showDatePicker}
+        style={styles.buttonContainer}
+        activeOpacity={0.8}
+      >
+        <Text>Select Date of Birth</Text>
+      </TouchableOpacity>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
       />
     </View>
   );
