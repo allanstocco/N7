@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import {
   FlatList,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
